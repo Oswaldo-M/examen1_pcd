@@ -4,13 +4,13 @@
 def validar_presion(presion):
     try:
         presion = float(presion)
-        return presion >= 0:
+        return presion >= 0
     except (ValueError,TypeError):
         return False
     
 #Valida que la unidad sea PSI o bar 
 def validar_unidad(unidad):
-    
+    unidad = unidad.upper()
     if unidad not in ["PSI", "BAR"]:
         return False
     return True
