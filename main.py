@@ -59,6 +59,7 @@ def crear_objetos(datos_revisados):
             print(f"Ignorando reistro invalido - {error}")
             continue
 
+
         #Convierte el diccionario en un objeto Revision
         revision = Revision(id_revision=dato["id_revision"],vehiculo=dato["vehiculo"],
         presion_bar = dato["presion"],tipo_vehiculo=dato["tipo_vehiculo"]                        
