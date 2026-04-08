@@ -16,7 +16,7 @@ def validar_unidad(unidad):
     return True
 
 
-#Valida cada una dato
+#Valida cada dato
 def validar_datos(id_revision,vehiculo,presion,unidad,tipo_vehiculo):
     
     if not id_revision or not str(id_revision).strip():
