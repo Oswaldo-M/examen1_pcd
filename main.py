@@ -23,9 +23,9 @@ def convertir_presion(datos_entrada):
             continue
         
         #Se asegura que la unidad sea valida (PSI o bar)
-        if validar_unidad(dato["unidad"].upper()):
+        if validar_unidad(dato["unidad"]):
             #Si la presion es PSI la convierte a bar 
-            if dato["unidad"].upper() == "PSI":
+            if dato["unidad"] == "PSI":
                 presion_bar = round(presionF * 0.0689,2)
             #Si la presion ya es bar la deja asi 
             else:

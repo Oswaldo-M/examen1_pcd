@@ -10,8 +10,8 @@ def validar_presion(presion):
     
 #Valida que la unidad sea PSI o bar 
 def validar_unidad(unidad):
-    unidad = unidad.upper()
-    if unidad not in ["PSI", "BAR"]:
+    #Checando que sea una unidad valida
+    if unidad not in ["PSI", "bar"]:
         return False
     return True
 
