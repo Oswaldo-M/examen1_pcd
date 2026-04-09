@@ -60,7 +60,7 @@ def crear_objetos(datos_revisados):
         if not valido:
             print(f"Ignorando reistro invalido - {error}")
             continue
-
+        
 
         #Convierte el diccionario en un objeto Revision
         revision = Revision(id_revision=dato["id_revision"],vehiculo=dato["vehiculo"],
@@ -76,43 +76,56 @@ def ordenar_datos(datos_neumaticos):
     return sorted(datos_neumaticos, key=lambda dato: dato.id_revision)
 
 
+
+#Crea un diccionario para la segunda salida
 def crear_dic(datos_revisados):
+    #Inicializa diccionario
     datos_conteo = {}
 
+
     for dato in datos_revisados:
+        #Si el tipo de vehiculo no esta en el diccionario lo crea e inicializa
         if dato["tipo_vehiculo"] not in datos_conteo:
             datos_conteo[dato["tipo_vehiculo"]] = {
                 "conteo":0,
                 "suma": 0.0,
                 "maximo":0
             }
-        
+        #Realiza el conteo de los tipos de vehiculos
         datos_conteo[dato["tipo_vehiculo"]]["conteo"] += 1
+        #Va sumando la presion 
         datos_conteo[dato["tipo_vehiculo"]]["suma"] += dato["presion"]
 
+        #Va encontrando el maximo de cada tipo de vehiculo
         if dato["presion"] > datos_conteo[dato["tipo_vehiculo"]]["maximo"]:
             datos_conteo[dato["tipo_vehiculo"]]["maximo"] = dato["presion"]
 
+    
     for tipo in datos_conteo:
         conteo = datos_conteo[tipo]["conteo"]
         suma = datos_conteo[tipo]["suma"]
+        #Encuentra el promedio de presion de cada tipo de vehiculo
         datos_conteo[tipo]["promedio"] = suma/conteo if conteo > 0 else 0 
         
-    
+    #Retorna el diccionario con todos los tipos de vehiculos y los valores correspondientes
     return datos_conteo 
 
-
-
-
+#Ordena el diccionario para la segunda salida
 def ordenar_dic(datos_conteo):
+
+    #Ordena por tipo de vehiculo en orden alfabetico
     ord1 = sorted(datos_conteo.items(), key=lambda d: d[0])
+    
+    #Ordena por valor de conteo de manera descendente
     ord2= sorted(ord1, key=lambda d: d[1]["conteo"],reverse=True) 
+    
+    #Convierte a diccionario y retorna 
     return dict(ord2)
 
 
 def main():
     print("-"*50)
-    print("Sistema de revision de presion de neumaticos")
+    print("Sistema de conversion de presion de neumaticos")
     print("-" * 50)
 
     #Lee los datos
@@ -129,10 +142,10 @@ def main():
     #Ordenar el diccionario para la segunda salida
     datos_conteo = ordenar_dic(datos_conteo)
     
-    #Crea objeto Revision
+    #Crea objeto Revision 
     datos_neumaticos = crear_objetos(datos_revisados)
     
-    #Ordenar datos
+    #Ordenar datos de la primera salida
     datos_neumaticos = ordenar_datos(datos_neumaticos)
 
     #Escribe el primer archivo de salida
@@ -143,6 +156,7 @@ def main():
     reporte_resumen(datos_conteo,ARCHIVO_REPORTE_RESUMEN)
     print("Segundo archivo de salida generado")
 
+    print("-"*50)
     print("Proceso finalizado con exito")
     print("-"*50)
 
