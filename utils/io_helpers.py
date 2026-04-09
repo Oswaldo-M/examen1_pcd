@@ -49,7 +49,7 @@ def reporte_detalle(datos_ordenados,ruta_archivo):
         #Escribir datos
         for dato in datos_ordenados:
             linea = f"{dato.id_revision},{dato.vehiculo},{dato.tipo_vehiculo},"
-            linea +=f"{dato.presion_bar:.2f},{dato.clasificacion()}"
+            linea +=f"{dato.presion_bar:.2f},{dato.clasificar()}"
             archivo.write(linea + '\n') 
 
 

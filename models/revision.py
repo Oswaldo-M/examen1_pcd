@@ -10,7 +10,7 @@ class Revision:
 
 
     #Clasifica dependiendo del valor de la presion
-    def clasificacion(self):
+    def clasificar(self):
 
         if self.presion_bar < 1.52:
             return "Muy baja"
@@ -27,4 +27,4 @@ class Revision:
         return f"{self.id_revision} - {self.vehiculo} ({self.tipo_vehiculo}) - {self.presion_bar}"
     
     def __repr__(self):
-        return f"Revision (id = '{self.id_revision}', valor = {self.presion_bar}, clase = '{self.clasificacion()}')"
+        return f"Revision (id = '{self.id_revision}', valor = {self.presion_bar}, clase = '{self.clasificar()}')"
