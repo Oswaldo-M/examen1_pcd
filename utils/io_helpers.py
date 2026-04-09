@@ -63,7 +63,7 @@ def reporte_resumen(datos_dic,ruta_archivo):
 
         #Desempaquetando y escribiendo los datos
         for tipo,dato in datos_dic.items():
-            linea = f"{tipo},{dato['conteo']},{dato['promedio']},{dato['maximo']}"
+            linea = f"{tipo},{dato['conteo']},{dato['promedio']:.2f},{dato['maximo']:.2f}"
             archivo.write(linea + '\n')
 
 
