@@ -1,0 +1,9 @@
+tipo_vehiculo,conteo,promedio,maximo
+Camioneta,139,2.54,3.76
+Lujo,129,2.50,3.78
+Pickup,123,2.50,3.80
+Compacto,112,2.54,3.74
+Sedán,107,2.41,3.79
+Deportivo,101,2.42,3.78
+Minivan,99,2.64,3.78
+SUV,97,2.53,3.79
